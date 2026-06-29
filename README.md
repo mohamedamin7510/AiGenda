@@ -916,11 +916,3 @@ Include:
 ## Contact
 
 Repository: `https://github.com/mohamedamin7510/AiGenda`
-
----
-
-## Notes
-
-- The README above is based on the current source snapshot and the Swagger screenshots provided.
-- Some external integration endpoints were visible in Swagger, but their controller source was not included in the inspected files.
-- If you want, the next step can be a **shorter GitHub README version** optimized for the repository homepage.
