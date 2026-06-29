@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Confirmation – AiGenda</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+    }
+
+    .wrapper {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 16px 40px;
+    }
+
+    /* ── Top brand ── */
+    .top-brand {
+      text-align: center;
+      padding: 24px 0 14px;
+      font-size: 15px;
+      color: #888888;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 40px 48px 36px;
+    }
+
+    /* ── Greeting ── */
+    .greeting {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222222;
+      margin-bottom: 18px;
+    }
+
+    /* ── Body text ── */
+    .body-text {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* ── CTA Button ── */
+    .cta-wrap {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: #22c55e;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 5px;
+    }
+
+    /* ── Code box  ← ONLY addition ── */
+    .code-section {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .code-label {
+      font-size: 13px;
+      color: #888888;
+      margin-bottom: 10px;
+    }
+
+    .code-box {
+      display: inline-block;
+      background: #f9f9f9;
+      border: 1.5px dashed #bbbbbb;
+      border-radius: 6px;
+      padding: 10px 28px;
+      font-family: 'Courier New', monospace;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 8px;
+      color: #333333;
+    }
+
+    /* ── Sign-off ── */
+    .signoff {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.8;
+      margin-bottom: 4px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      margin: 28px 0;
+    }
+
+    /* ── Fallback ── */
+    .fallback-text {
+      font-size: 13px;
+      color: #888888;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .fallback-url {
+      font-size: 13px;
+      color: #555555;
+      word-break: break-all;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 24px 0 0;
+      font-size: 13px;
+      color: #aaaaaa;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Top brand -->
+  <div class="top-brand">AiGenda</div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <!-- Greeting -->
+    <p class="greeting">Hi {{name}},</p>
+
+    <!-- Intro -->
+    <p class="body-text">To confirm your email, please click the button below:</p>
+
+    <!-- Button -->
+    <div class="cta-wrap">
+      <a href="{{action_url}}" class="cta-btn">Verify email address</a>
+    </div>
+
+    <!-- ✅ Code — only thing added -->
+    <div class="code-section">
+      <p class="code-label">Or enter this verification code manually</p>
+      <div class="code-box">{{code}}</div>
+    </div>
+
+    <!-- Sign-off -->
+    <div class="signoff">
+      Thanks,<br/>
+      AiGenda team
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- Fallback -->
+    <p class="fallback-text">
+      If you're having trouble with the button above, copy and paste the URL below
+      into your web browser.
+    </p>
+
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    AiGenda<br/>
+    1234 Street Rd.<br/>
+    Cairo, Egypt
+  </div>
+
+</div>
+</body>
+</html>

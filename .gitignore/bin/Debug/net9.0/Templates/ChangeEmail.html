@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Confirmation – AiGenda</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+    }
+
+    .wrapper {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 16px 40px;
+    }
+
+    .top-brand {
+      text-align: center;
+      padding: 24px 0 14px;
+      font-size: 15px;
+      color: #888888;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 40px 48px 36px;
+    }
+
+    .greeting {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222222;
+      margin-bottom: 18px;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .cta-wrap {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: #22c55e;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 5px;
+    }
+
+    /* ── Code section ── */
+    .code-section {
+      margin-bottom: 28px;
+    }
+
+    .code-label {
+      font-size: 13px;
+      color: #888888;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    /* Code text fills full width on its own line */
+    .code-wrap {
+      background: #f9f9f9;
+      border: 1.5px dashed #bbbbbb;
+      border-radius: 6px 6px 0 0;
+      padding: 12px 16px;
+    }
+
+    .code-box {
+      display: block;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #333333;
+      word-break: break-all;
+      line-height: 1.6;
+    }
+
+    /* Copy button sits below the code box */
+    .copy-btn {
+      display: block;
+      width: 100%;
+      background: #22c55e;
+      color: #ffffff;
+      border: none;
+      border-radius: 0 0 6px 6px;
+      padding: 8px 0;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .copy-btn:hover  { background: #16a34a; }
+    .copy-btn.copied { background: #16a34a; }
+
+    .signoff {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.8;
+      margin-bottom: 4px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      margin: 28px 0;
+    }
+
+    .fallback-text {
+      font-size: 13px;
+      color: #888888;
+      line-height: 1.7;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px 0 0;
+      font-size: 13px;
+      color: #aaaaaa;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <div class="top-brand">AiGenda</div>
+
+  <div class="card">
+
+    <p class="greeting">Hi {{name}},</p>
+
+    <p class="body-text">To confirm your email, please click the button below:</p>
+
+    <div class="cta-wrap">
+      <a href="{{action_url}}" class="cta-btn">Verify email address</a>
+    </div>
+
+    <!-- Code section: full-width code + copy button below -->
+    <div class="code-section">
+      <p class="code-label">Or enter this verification code manually</p>
+      <div class="code-wrap">
+        <span class="code-box" id="codeValue">{{code}}</span>
+      </div>
+      <button class="copy-btn" id="copyBtn" onclick="copyCode()">Copy code</button>
+    </div>
+
+    <div class="signoff">
+      Thanks,<br/>
+      AiGenda team
+    </div>
+
+    <hr class="divider"/>
+
+    <p class="fallback-text">
+      If you're having trouble with the button above, copy and paste the URL below
+      into your web browser.
+    </p>
+
+  </div>
+
+  <div class="footer">
+    AiGenda<br/>
+    1234 Street Rd.<br/>
+    Cairo, Egypt
+  </div>
+
+</div>
+
+<script>
+  function copyCode() {
+    var text = document.getElementById('codeValue').innerText;
+    var btn  = document.getElementById('copyBtn');
+
+    function onSuccess() {
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = 'Copy code';
+        btn.classList.remove('copied');
+      }, 2000);
+    }
+
+    // Modern API
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(fallback);
+    } else {
+      fallback();
+    }
+
+    // Fallback using textarea
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); onSuccess(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
+</script>
+</body>
+</html>

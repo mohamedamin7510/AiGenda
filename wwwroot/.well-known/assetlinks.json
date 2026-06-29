@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.ajenda_app",
+      "sha256_cert_fingerprints": [
+        "1B:11:10:4E:FC:AB:3F:52:89:39:A0:55:39:FA:A4:04:B0:D6:4C:85:EF:56:7A:57:4F:55:E8:A6:8D:40:5E:DB"
+      ]
+    }
+  }
+] 

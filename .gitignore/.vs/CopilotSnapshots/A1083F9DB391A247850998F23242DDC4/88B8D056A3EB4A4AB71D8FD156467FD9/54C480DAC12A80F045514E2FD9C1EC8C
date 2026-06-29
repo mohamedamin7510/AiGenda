@@ -1,0 +1,4 @@
+﻿# Copilot Instructions
+
+## Project Guidelines
+- Authorization is intended to be enforced at endpoint level using a custom HasPermission attribute, so service methods can assume permission checks already passed.

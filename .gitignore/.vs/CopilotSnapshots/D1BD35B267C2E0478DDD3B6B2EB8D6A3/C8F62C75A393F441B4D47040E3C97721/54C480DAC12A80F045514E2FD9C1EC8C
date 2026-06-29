@@ -1,0 +1,10 @@
+﻿# Copilot Instructions
+
+## Project Guidelines
+- Authorization is intended to be enforced at endpoint level using a custom HasPermission attribute, which should accept only a permission argument and be reusable across controllers/endpoints (workspace, space, task, etc.), allowing service methods to assume permission checks have already passed.
+- The app domain is ClickUp-like and hierarchical: Workspace -> Space -> Tasks/Notes, with analytics across this hierarchy.
+- The userId passed to workspace service methods is guaranteed non-null by the authenticated endpoint pipeline.
+- InviteMember.request.email is already validated upstream in request validation, so null/empty checks in service are not required by current project flow.
+
+## User Interface Guidelines
+- Profile UI will not allow direct email editing in the main profile form; email changes are handled through a dedicated change-email flow.
